@@ -1,19 +1,27 @@
 public class Store {
+    // Definir constantes
+    private static final int[] PRECIOS_PRODUCTOS = {20, 5, 10}; // Precios de los productos
+    private static final int[] CANTIDADES_PRODUCTOS = {1, 5, 8}; ; // Cantidades vendidas
+    private static final int UMbral_VENTAS = 50; // Umbral para el desempeño en ventas
+    
     public static void main(String[] args) {
-        int p1 = 15;
-        int p2 = 10;
-        int p3 = 5;
-
-        int total1 = p1 * 2;
-        int total2 = p2 * 3;
-        int total3 = p3 * 4;
-
-        int totalSales = total1 + total2 + total3;
-
-        if (totalSales > 50) {
-            System.out.println("Good sales performance");
+        // Validar que los arreglos de precios y cantidades tengan el mismo tamaño
+        if (PRECIOS_PRODUCTOS.length != CANTIDADES_PRODUCTOS.length) {
+            System.out.println("Error: Los arreglos de precios y cantidades no coinciden.");
+            return;
+        }
+        // Calcular las ventas totales para cada producto
+        int totalVentas = 0;
+        for (int i = 0; i < PRECIOS_PRODUCTOS.length; i++) {
+            int totalProducto = PRECIOS_PRODUCTOS[i] * CANTIDADES_PRODUCTOS[i];
+            totalVentas += totalProducto;
+        }
+        // Determinar y mostrar el desempeño de ventas
+        if (totalVentas > UMbral_VENTAS) {
+            System.out.println("Buen desempeño en ventas");
         } else {
-            System.out.println("Low sales performance");
+            System.out.println("Mal desempeño en ventas");
         }
     }
 }
+
